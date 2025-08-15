@@ -494,6 +494,7 @@ export const EthicalHacksContent = () => (
             transition: 'transform 0.3s ease',
             cursor: 'pointer',
           }}
+          onClick={() => window.open('https://dashboards-kappa-azure.vercel.app/', '_blank')}
           onError={(e) => {
             console.log('Image failed to load:', e.target.src);
             e.target.style.display = 'none';
