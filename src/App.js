@@ -88,27 +88,7 @@ const App = () => {
     setShowScreensaver(false);
 
     if (itemName === "Hacker Typer") {
-      setWindows([{ id: Date.now(), title: itemName, content: (
-        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-          <div style={{
-            position: 'absolute',
-            top: 10,
-            left: 0,
-            width: '100%',
-            textAlign: 'center',
-            zIndex: 2,
-            color: '#fff',
-            fontWeight: 600,
-            fontSize: 18,
-            textShadow: '0 2px 6px #000, 0 1px 1px #222',
-            pointerEvents: 'none',
-          }}>
-            Type fast to hack!
-          </div>
-          <HackerTerminal />
-        </div>
-      ), width: 676, height: 500 }]);
-      setActiveWindow(itemName);
+      setShowHackerTerminal(true);
     } else if (itemName === "Calculator") {
       setShowCalculator(true);
     } else if (itemName === "Ultranoid") {
@@ -116,16 +96,16 @@ const App = () => {
     } else if (itemName === "Minesweeper") {
       setShowScreensaver(true);
     } else if (itemName === "About Me") {
-      setWindows([{ id: Date.now(), title: itemName, content: <AboutMeContent />, width: 676, height: 624 }]);
+  setWindows([{ id: Date.now(), title: itemName, content: <AboutMeContent />, width: 676, height: 654 }]);
       setActiveWindow(itemName);
     } else if (itemName === "Skills") {
-      setWindows([{ id: Date.now(), title: itemName, content: <SkillsContent />, width: 676, height: 624 }]);
+  setWindows([{ id: Date.now(), title: itemName, content: <SkillsContent />, width: 676, height: 654 }]);
       setActiveWindow(itemName);
     } else if (itemName === "Software") {
-      setWindows([{ id: Date.now(), title: itemName, content: <EthicalHacksContent />, width: 636, height: 624 }]);
+  setWindows([{ id: Date.now(), title: itemName, content: <EthicalHacksContent />, width: 636, height: 654 }]);
       setActiveWindow(itemName);
     } else if (itemName === "Security") {
-      setWindows([{ id: Date.now(), title: itemName, content: <SecurityContent />, width: 676, height: 624 }]);
+  setWindows([{ id: Date.now(), title: itemName, content: <SecurityContent />, width: 676, height: 654 }]);
       setActiveWindow(itemName);
     } else if (itemName === "Resume") {
       window.open("https://flowcv.com/resume/u2ckr5r2ktsk", "_blank", "noopener,noreferrer");
@@ -418,6 +398,7 @@ const App = () => {
       </div>
 
       {/* Windows */}
+
       {fadeInStage >= 2 &&
         windows.map((win) => (
           <Window
@@ -430,6 +411,9 @@ const App = () => {
           />
         ))}
 
+      {/* HackerTerminal */}
+      {showHackerTerminal && <HackerTerminal onClose={() => setShowHackerTerminal(false)} />}
+
 
   {/* Calculator */}
   {showCalculator && <Calculator onClose={closeCalculator} />}
@@ -438,7 +422,7 @@ const App = () => {
   {showArkanoid && <Arkanoid onClose={closeArkanoid} />}
 
   {/* Minesweeper */}
-  {showScreensaver && (
+      {showScreensaver && (
         <div style={{
           position: 'fixed',
           top: 0,
@@ -478,7 +462,7 @@ const App = () => {
                 padding: '4px 10px',
                 fontSize: 18,
                 cursor: 'pointer',
-                zIndex: 10,
+                zIndex: 1002,
               }}
               aria-label="Close Winesweeper"
             >✕</button>

@@ -3,9 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 const Window = ({ title, content, onClose }) => {
   const [position, setPosition] = useState({
     x: Math.max(50, (window.innerWidth - 653) / 2),
-    y: Math.max(50, Math.min((window.innerHeight - 582) / 2, window.innerHeight - 587))
+    y: Math.max(50, Math.min((window.innerHeight - 612) / 2, window.innerHeight - 617))
   });
-  const [size, setSize] = useState({ width: 653, height: 582 }); // Shrunk width by 15px
+  const [size, setSize] = useState({ width: 653, height: 612 }); // Default height +30px
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const dragOffset = useRef({ x: 0, y: 0 });
