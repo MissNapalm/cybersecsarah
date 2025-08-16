@@ -331,7 +331,7 @@ export const SkillsContent = () => {
           Experience includes cloud deployment on AWS and containerization with Docker.
         </p>
         <div style={{ textAlign: 'center' }}>
-          {['React.js', 'Node.js', 'JavaScript', 'Python', 'Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Docker', 'Flask', 'C'].map(skill => 
+          {['React.js', 'Node.js', 'JavaScript', 'Python', 'Next.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Flask', 'C'].map(skill => 
             <SkillBubble key={skill} skill={skill} />
           )}
         </div>
