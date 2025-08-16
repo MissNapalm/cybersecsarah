@@ -41,15 +41,15 @@ const App = () => {
   const dockRef = useRef();
 
   // Retrigger shine animation exactly when slide-down ends
+  // Trigger shine animation 2.5 seconds after boot starts
   useEffect(() => {
-    if (fadeInStage === 3) {
-      // Wait for the dock slide-down transition to finish (1.2s)
+    if (fadeInStage >= 1) { // Once boot process has started
       const timer = setTimeout(() => {
         setShineCount((c) => c + 1);
-      }, 1200);
+      }, 2500); // 2.5 seconds after boot starts
       return () => clearTimeout(timer);
     }
-  }, [fadeInStage]);
+  }, [fadeInStage >= 1 ? 1 : 0]); // Only run when boot starts, not on every fadeInStage change
 
   // Sounds
   const bootSound = new Howl({
