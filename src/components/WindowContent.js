@@ -640,6 +640,7 @@ export const EthicalHacksContent = () => (
             transition: 'transform 0.3s ease',
             cursor: 'pointer',
           }}
+          onClick={() => window.open('https://github.com/MissNapalm/gpt_voice_assistant', '_blank')}
           onError={(e) => {
             console.log('Image failed to load:', e.target.src);
             e.target.style.display = 'none';
@@ -702,6 +703,7 @@ export const EthicalHacksContent = () => (
             transition: 'transform 0.3s ease',
             cursor: 'pointer',
           }}
+          onClick={() => window.open('https://github.com/MissNapalm/helios', '_blank')}
           onError={(e) => {
             console.log('Image failed to load:', e.target.src);
             e.target.style.display = 'none';
@@ -783,6 +785,7 @@ export const EthicalHacksContent = () => (
             transition: 'transform 0.3s ease',
             cursor: 'pointer',
           }}
+          onClick={() => window.open('https://github.com/MissNapalm/fluid-dyamics', '_blank')}
           onError={(e) => {
             console.log('Image failed to load:', e.target.src);
             e.target.style.display = 'none';
@@ -845,6 +848,7 @@ export const EthicalHacksContent = () => (
             transition: 'transform 0.3s ease',
             cursor: 'pointer',
           }}
+          onClick={() => window.open('https://github.com/MissNapalm/Antibody', '_blank')}
           onError={(e) => {
             console.log('Image failed to load:', e.target.src);
             e.target.style.display = 'none';
@@ -992,10 +996,10 @@ export const NonprofitContent = () => (
                 padding: '4px 8px',
                 borderRadius: '4px',
                 background: '#0e639c',
-                fontSize: '11px',
+                fontSize: 11,
                 color: '#ffffff',
                 border: '1px solid #1177bb',
-                fontWeight: '400',
+                fontWeight: 400,
               }}>
                 {skill}
               </span>

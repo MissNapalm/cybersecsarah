@@ -50,6 +50,18 @@ const Dock = ({ apps, onAppClick }) => {
     setHoveredIndex(null);
   };
 
+  const playShine = () => {
+    const shineEl = document.querySelector('.dock-shine');
+    if (shineEl) {
+      shineEl.classList.remove('shine-animate');
+      // Force reflow
+      void shineEl.offsetWidth;
+      shineEl.classList.add('shine-animate');
+    }
+  };
+
+  // Call playShine() every time the dock is opened
+
   // 20% shrink = scale(0.8)
   return (
     <div

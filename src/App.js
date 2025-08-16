@@ -7,6 +7,7 @@ import HackerTerminal from "./components/HackerTerminal";
 import Calculator from "./components/Calculator";
 import Arkanoid from "./components/Arkanoid"; // if your game component is actually named Ultranoid, switch this import too
 import PipesScreensaver from "./components/PipesScreensaver";
+import Minesweeper from "./components/Minesweeper";
 import {
   AboutMeContent,
   SkillsContent,
@@ -29,9 +30,8 @@ const App = () => {
   const [icons, setIcons] = useState([
     { id: 1, name: "Hacker Typer Game", icon: "💻", content: "Documents Content", position: { x: 20, y: 130 } },
     { id: 2, name: "Calculator", icon: "🧮", content: "Projects Content", position: { x: 20, y: 230 } },
-    // Renamed Arkanoid -> Ultranoid
     { id: 3, name: "Ultranoid", icon: "🧱", content: "Arkanoid Content", position: { x: 20, y: 330 } },
-    { id: 4, name: "3D Pipes Screensaver", icon: "�", content: "Screensaver Content", position: { x: 20, y: 430 } },
+    { id: 4, name: "Winesweeper", icon: "🍷", content: "Winesweeper Content", position: { x: 20, y: 430 } },
   ]);
   const [booted, setBooted] = useState(false);
   const [fadeInStage, setFadeInStage] = useState(0);
@@ -87,7 +87,7 @@ const App = () => {
       setShowCalculator(true);
     } else if (itemName === "Ultranoid") {
       setShowArkanoid(true);
-    } else if (itemName === "3D Pipes Screensaver") {
+    } else if (itemName === "Winesweeper") {
       setShowScreensaver(true);
     } else if (itemName === "Resume") {
       // Open FlowCV resume in a new tab
@@ -411,10 +411,57 @@ const App = () => {
       {showCalculator && <Calculator onClose={closeCalculator} />}
 
       {/* Ultranoid (uses your Arkanoid component unless you rename/import Ultranoid) */}
-      {showArkanoid && <Arkanoid onClose={closeArkanoid} />}
+  {showArkanoid && <Arkanoid onClose={closeArkanoid} />}
 
-      {/* 3D Pipes Screensaver */}
-      {showScreensaver && <PipesScreensaver onClose={closeScreensaver} />}
+      {/* Winesweeper */}
+      {showScreensaver && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'rgba(0,0,0,0.25)',
+          zIndex: 1000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div style={{
+            position: 'relative',
+            background: 'rgba(20,24,40,0.98)',
+            borderRadius: 16,
+            boxShadow: '0 8px 32px 0 rgba(31,38,135,0.37)',
+            padding: 16,
+            width: 465,
+            minWidth: 0,
+            minHeight: 0,
+            maxWidth: '95vw',
+            maxHeight: '95vh',
+            overflow: 'auto',
+            border: '2px solid #3b82f6',
+          }}>
+            <button
+              onClick={closeScreensaver}
+              style={{
+                position: 'absolute',
+                top: 8,
+                right: 8,
+                background: '#222b',
+                color: '#fff',
+                border: 'none',
+                borderRadius: 6,
+                padding: '4px 10px',
+                fontSize: 18,
+                cursor: 'pointer',
+                zIndex: 10,
+              }}
+              aria-label="Close Winesweeper"
+            >✕</button>
+            <Minesweeper />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

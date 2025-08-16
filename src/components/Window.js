@@ -207,7 +207,7 @@ const Window = ({ title, content, onClose }) => {
               width: "16px",
               height: "16px",
               cursor: "se-resize",
-              position: "absolute",
+              position: "fixed",
               bottom: "2px",
               right: "2px",
               zIndex: 1001,
