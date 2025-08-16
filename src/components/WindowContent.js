@@ -326,13 +326,12 @@ export const SkillsContent = () => {
           marginBottom: '15px',
         }}>
           Comprehensive full-stack development expertise spanning modern frontend frameworks, robust backend systems, 
-          and scalable database architectures. Proficient in building responsive web applications with React.js and Next.js, 
-          implementing secure RESTful APIs with Node.js and Python, and designing efficient database schemas with PostgreSQL. 
-          Experience includes cloud deployment on AWS, containerization with Docker, and implementing CI/CD pipelines for 
-          automated testing and deployment workflows.
+          and database architectures. Proficient in building responsive web applications with React.js and Next.js, 
+          implementing secure RESTful APIs with Node.js and Python, and designing efficient databases with PostgreSQL. 
+          Experience includes cloud deployment on AWS and containerization with Docker.
         </p>
         <div style={{ textAlign: 'center' }}>
-          {['React.js', 'Node.js', 'JavaScript', 'Python', 'Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Docker', 'Flask', 'C#'].map(skill => 
+          {['React.js', 'Node.js', 'JavaScript', 'Python', 'Next.js', 'TypeScript', 'PostgreSQL', 'AWS', 'Docker', 'Flask', 'C'].map(skill => 
             <SkillBubble key={skill} skill={skill} />
           )}
         </div>
@@ -408,7 +407,7 @@ export const SkillsContent = () => {
           production environments.
         </p>
         <div style={{ textAlign: 'center' }}>
-          {['CI/CD', 'AWS', 'Docker', 'Linux Admin', 'Network Security'].map(skill => 
+          {['AWS', 'Docker', 'Linux Admin', 'Network Security'].map(skill => 
             <SkillBubble key={skill} skill={skill} />
           )}
         </div>

@@ -173,41 +173,41 @@ const Window = ({ title, content, onClose }) => {
 
       {/* Window Content - SINGLE content area for Security windows */}
       {title === 'Security' ? (
-        // For Security window: single scrollable container with hidden scrollbar
-        <div
-          className="hide-scrollbar"
-          style={{
-            flex: 1,
-            minHeight: 0,
-            overflow: "auto",
-            padding: "24px",
-            color: "rgba(255, 255, 255, 0.92)",
-            fontSize: "14px",
-            fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-            background: `
-              linear-gradient(135deg, transparent 0%, transparent calc(100% - 30px), rgba(255, 255, 255, 0.08) calc(100% - 25px), rgba(255, 255, 255, 0.04) 100%),
-              linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.1) 100%)
-            `,
-            lineHeight: "1.6",
-            borderBottomLeftRadius: "20px",
-            borderBottomRightRadius: "20px",
-            position: "relative"
-          }}
-        >
-          {typeof content === "string" ? (
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-          ) : (
-            content
-          )}
-          
-          {/* Resize handle for Security window */}
+        // For Security window: content area with resize handle outside scrollable area
+        <div style={{position: "relative", flex: 1, minHeight: 0, display: "flex", flexDirection: "column"}}>
+          <div
+            className="hide-scrollbar"
+            style={{
+              flex: 1,
+              minHeight: 0,
+              overflow: "auto",
+              padding: "24px",
+              color: "rgba(255, 255, 255, 0.92)",
+              fontSize: "14px",
+              fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+              background: `
+                linear-gradient(135deg, transparent 0%, transparent calc(100% - 30px), rgba(255, 255, 255, 0.08) calc(100% - 25px), rgba(255, 255, 255, 0.04) 100%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.1) 100%)
+              `,
+              lineHeight: "1.6",
+              borderBottomLeftRadius: "20px",
+              borderBottomRightRadius: "20px"
+            }}
+          >
+            {typeof content === "string" ? (
+              <div dangerouslySetInnerHTML={{ __html: content }} />
+            ) : (
+              content
+            )}
+          </div>
+          {/* Resize handle for Security window, always bottom right of window */}
           <div
             className="resize-handle"
             style={{
               width: "16px",
               height: "16px",
               cursor: "se-resize",
-              position: "fixed",
+              position: "absolute",
               bottom: "2px",
               right: "2px",
               zIndex: 1001,

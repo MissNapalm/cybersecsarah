@@ -259,7 +259,7 @@ const App = () => {
             className="absolute cursor-pointer"
             style={{
               left: `${icon.position.x}px`,
-              top: `${icon.position.y}px`,
+              top: `${icon.position.y + 30}px`, // Move down 30px
               userSelect: 'none',
               WebkitUserSelect: 'none',
               MozUserSelect: 'none',
