@@ -28,20 +28,26 @@ const App = () => {
   const [showScreensaver, setShowScreensaver] = useState(false);
   const [audio, setAudio] = useState(true); // Audio enabled by default
   const [icons, setIcons] = useState([
-    { id: 1, name: "Hacker Typer Game", icon: "💻", content: "Documents Content", position: { x: 20, y: 130 } },
-    { id: 2, name: "Calculator", icon: "🧮", content: "Projects Content", position: { x: 20, y: 230 } },
-    { id: 3, name: "Ultranoid", icon: "🧱", content: "Arkanoid Content", position: { x: 20, y: 330 } },
-    { id: 4, name: "Winesweeper", icon: "🍷", content: "Winesweeper Content", position: { x: 20, y: 430 } },
+  { id: 1, name: "Hacker Typer", icon: "/terminal.png", content: "Documents Content", position: { x: 20, y: 130 } },
+  { id: 2, name: "Calculator", icon: "/calc.png", content: "Projects Content", position: { x: 20, y: 230 } },
+  { id: 3, name: "Ultranoid", icon: "/rocket.png", content: "Arkanoid Content", position: { x: 20, y: 330 } },
+  { id: 4, name: "Minesweeper", icon: "/mine.png", content: "Winesweeper Content", position: { x: 20, y: 430 } },
   ]);
   const [booted, setBooted] = useState(false);
   const [fadeInStage, setFadeInStage] = useState(0);
   const [buttonVisible, setButtonVisible] = useState(true);
   const [blackScreenOpacity, setBlackScreenOpacity] = useState(1);
-  const [shine, setShine] = useState(false);
+  const [shineCount, setShineCount] = useState(0);
+  const dockRef = useRef();
 
+  // Retrigger shine animation exactly when slide-down ends
   useEffect(() => {
     if (fadeInStage === 3) {
-      setTimeout(() => setShine(true), 400); // Adjust delay to match your drop animation
+      // Wait for the dock slide-down transition to finish (1.2s)
+      const timer = setTimeout(() => {
+        setShineCount((c) => c + 1);
+      }, 1200);
+      return () => clearTimeout(timer);
     }
   }, [fadeInStage]);
 
@@ -81,21 +87,34 @@ const App = () => {
     setShowArkanoid(false);
     setShowScreensaver(false);
 
-    if (itemName === "Terminal") {
-      setShowHackerTerminal(true);
+    if (itemName === "Hacker Typer") {
+      setWindows([{ id: Date.now(), title: itemName, content: (
+        <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+          <div style={{
+            position: 'absolute',
+            top: 10,
+            left: 0,
+            width: '100%',
+            textAlign: 'center',
+            zIndex: 2,
+            color: '#fff',
+            fontWeight: 600,
+            fontSize: 18,
+            textShadow: '0 2px 6px #000, 0 1px 1px #222',
+            pointerEvents: 'none',
+          }}>
+            Type fast to hack!
+          </div>
+          <HackerTerminal />
+        </div>
+      ), width: 676, height: 500 }]);
+      setActiveWindow(itemName);
     } else if (itemName === "Calculator") {
       setShowCalculator(true);
     } else if (itemName === "Ultranoid") {
       setShowArkanoid(true);
-    } else if (itemName === "Winesweeper") {
+    } else if (itemName === "Minesweeper") {
       setShowScreensaver(true);
-    } else if (itemName === "Resume") {
-      // Open FlowCV resume in a new tab
-      window.open("https://flowcv.com/resume/u2ckr5r2ktsk", "_blank", "noopener,noreferrer");
-      return;
-    } else if (itemName === "Hacker Typer Game") {
-      setWindows([{ id: Date.now(), title: itemName, content: <HackerTerminal />, width: 676, height: 500 }]);
-      setActiveWindow(itemName);
     } else if (itemName === "About Me") {
       setWindows([{ id: Date.now(), title: itemName, content: <AboutMeContent />, width: 676, height: 624 }]);
       setActiveWindow(itemName);
@@ -108,6 +127,9 @@ const App = () => {
     } else if (itemName === "Security") {
       setWindows([{ id: Date.now(), title: itemName, content: <SecurityContent />, width: 676, height: 624 }]);
       setActiveWindow(itemName);
+    } else if (itemName === "Resume") {
+      window.open("https://flowcv.com/resume/u2ckr5r2ktsk", "_blank", "noopener,noreferrer");
+      return;
     }
   };
 
@@ -301,6 +323,7 @@ const App = () => {
         }}
       >
         <Dock
+          ref={dockRef}
           apps={[
             { 
               name: "About Me", 
@@ -390,7 +413,7 @@ const App = () => {
             },
           ]}
           onAppClick={openWindow}
-          shine={shine}
+          shine={shineCount}
         />
       </div>
 
@@ -407,14 +430,15 @@ const App = () => {
           />
         ))}
 
-      {/* Calculator */}
-      {showCalculator && <Calculator onClose={closeCalculator} />}
 
-      {/* Ultranoid (uses your Arkanoid component unless you rename/import Ultranoid) */}
+  {/* Calculator */}
+  {showCalculator && <Calculator onClose={closeCalculator} />}
+
+  {/* Ultranoid (uses your Arkanoid component unless you rename/import Ultranoid) */}
   {showArkanoid && <Arkanoid onClose={closeArkanoid} />}
 
-      {/* Winesweeper */}
-      {showScreensaver && (
+  {/* Minesweeper */}
+  {showScreensaver && (
         <div style={{
           position: 'fixed',
           top: 0,

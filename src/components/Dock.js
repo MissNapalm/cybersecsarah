@@ -95,9 +95,10 @@ const Dock = ({ apps, onAppClick }) => {
           overflow: "hidden",
         }}
       >
-        {/* Shine overlay */}
+        {/* Shine overlay - only render when animating, use key to force remount */}
+        {/* Shine overlay - always render, animate with class */}
         <div
-          className={`shine-overlay ${showShine ? 'shine-active' : ''}`}
+          className={`shine-overlay${showShine ? ' shine-active' : ''}`}
           style={{
             position: "absolute",
             top: 0,

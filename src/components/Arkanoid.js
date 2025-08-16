@@ -42,23 +42,23 @@ function Ultranoid({ onClose }) {
     // Player bullets
     playerBulletW: 3,
     playerBulletH: 10,
-    playerBulletSpeed: 3.9, // 30% faster (3 * 1.3 = 3.9)
+  playerBulletSpeed: 3.7193013, // 5% slower (3.915054 * 0.95)
 
     // BIG charge shot (auto-fires after 3s of hold)
     chargeTimeMs: 3000,
     bigBulletW: 8,
     bigBulletH: 22,
-    bigBulletSpeed: 4.16, // 30% faster (3.2 * 1.3 = 4.16)
+  bigBulletSpeed: 3.96725472, // 5% slower (4.1760576 * 0.95)
     bigBulletDamage: 2,    // <- double damage
     bigBulletColor: '#80FFEA',
 
     // Enemies
     enemySize: 31,
     enemySpawnFrames: 120,
-    enemyBaseSpeed: 0.6,
+  enemyBaseSpeed: 0.5722002, // 5% slower (0.602316 * 0.95)
     enemyBulletW: 6,
     enemyBulletH: 6,
-    enemyBulletSpeed: 2.2,
+  enemyBulletSpeed: 2.0980674, // 5% slower (2.208492 * 0.95)
     enemyFireMs: 500,
     maxEnemies: 6,
 
@@ -75,7 +75,7 @@ function Ultranoid({ onClose }) {
     maxParticles: 200,
 
     // Ball
-    ballSpeed: 1.8,
+  ballSpeed: 1.7166006, // 5% slower (1.806948 * 0.95)
   }), []);
 
   // Game state (mutable)
@@ -525,9 +525,12 @@ function Ultranoid({ onClose }) {
       }
 
       if (!g.started) {
+        ctx.font = '17px Arial';
+        ctx.fillStyle = '#FFD700';
+        ctx.textAlign = 'center';
+        ctx.fillText('mouse = move, left click = shoot', cfg.W / 2, (cfg.H / 2) - 32);
         ctx.font = '20px Arial';
         ctx.fillStyle = '#FFFFFF';
-        ctx.textAlign = 'center';
         ctx.fillText('Click to start!', cfg.W / 2, cfg.H / 2);
         ctx.textAlign = 'left';
       }
@@ -842,7 +845,7 @@ function Ultranoid({ onClose }) {
 
     rafRef.current = requestAnimationFrame(loop);
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-  }, [cfg, resetGame, initBricks]);
+  }, []);
 
   // Input
   const onCanvasMouseMove = (e) => {
