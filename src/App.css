@@ -1,3 +1,11 @@
+/* Force hide scrollbars for all elements globally */
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar {
+  display: none !important;
+}
 /* Hide all scrollbars globally */
 * {
   scrollbar-width: none; /* Firefox */

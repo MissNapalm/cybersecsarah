@@ -547,7 +547,7 @@ export const EthicalHacksContent = () => (
       }}>
         <img 
           src="/spaghetti.png"
-          alt="Trattoria Bellissimo"
+          alt="Essenza Italian Restaurant"
           style={{
             width: '100%',
             height: '130px',
@@ -573,7 +573,7 @@ export const EthicalHacksContent = () => (
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale"
         }}>
-          Trattoria Bellissimo
+          Essenza's Italian Restaurant
         </h3>
         <p style={{ 
           fontSize: '12px', 

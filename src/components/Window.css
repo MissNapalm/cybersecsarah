@@ -1,3 +1,14 @@
+/* Force hide scrollbars for all scrollable elements inside windows */
+.window-content, .window-content * {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.window-content::-webkit-scrollbar, .window-content *::-webkit-scrollbar {
+  display: none !important;
+}
+.window-content {
+  overflow: hidden !important;
+}
 /* Hide scrollbars for window content */
 .window-content {
   scrollbar-width: none !important;
