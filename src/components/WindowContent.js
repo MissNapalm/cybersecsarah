@@ -523,7 +523,7 @@ export const EthicalHacksContent = () => (
           MozOsxFontSmoothing: "grayscale"
         }}>
           Interactive dashboard simulation for autonomous vehicles with real-time data visualization, 
-          sensor monitoring, and route planning capabilities.
+          sensor monitoring, and simulated vehicle telemetry.
         </p>
         <div style={{ 
           fontSize: '10px', 
@@ -586,7 +586,7 @@ export const EthicalHacksContent = () => (
           WebkitFontSmoothing: "antialiased",
           MozOsxFontSmoothing: "grayscale"
         }}>
-          Web application for a local Italian restaurant, featuring a dynamic menu, online ordering, and a custom admin dashboard for managing orders and inventory.
+          Web application for a local Italian restaurant, featuring video backgrounds and an elegant, modern design.
         </p>
         <div style={{ 
           fontSize: '10px', 

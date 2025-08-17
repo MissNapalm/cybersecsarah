@@ -110,16 +110,16 @@
     height: 16px;
     border-radius: 50%;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: none !important;
+    box-shadow: none !important;
   }
   
-  .window-header-button:hover {
-    transform: scale(1.2);
-  }
   
   .window-header-button.close {
     background: linear-gradient(135deg, #ff4b4b, #d32f2f);
+    box-shadow: none !important;
+    filter: none !important;
+    transition: none !important;
   }
   
   .window-header-button.minimize {

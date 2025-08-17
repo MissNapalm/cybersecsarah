@@ -102,8 +102,8 @@ const App = () => {
   setWindows([{ id: Date.now(), title: itemName, content: <SkillsContent />, width: 676, height: 654 }]);
       setActiveWindow(itemName);
     } else if (itemName === "Software") {
-  setWindows([{ id: Date.now(), title: "Essenza's Italian Restaurant", content: <EthicalHacksContent />, width: 636, height: 654 }]);
-      setActiveWindow("Essenza's Italian Restaurant");
+  setWindows([{ id: Date.now(), title: itemName, content: <EthicalHacksContent />, width: 636, height: 654 }]);
+      setActiveWindow(itemName);
     } else if (itemName === "Security") {
   setWindows([{ id: Date.now(), title: itemName, content: <SecurityContent />, width: 676, height: 654 }]);
       setActiveWindow(itemName);
