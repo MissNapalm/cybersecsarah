@@ -122,38 +122,18 @@ const Window = ({ title, content, onClose }) => {
               height: "16px",
               borderRadius: "50%",
               border: "none",
-              background: "linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)",
+              background: "#ff4b4b",
               cursor: "pointer",
               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               opacity: 0.9,
-              boxShadow: `
-                0 2px 8px rgba(255, 107, 107, 0.3),
-                0 1px 3px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3)
-              `,
+              boxShadow: "none",
               position: "relative",
               display: "flex",
               alignItems: "center",
               justifyContent: "center"
             }}
-            onMouseEnter={(e) => {
-              e.target.style.opacity = "1";
-              e.target.style.transform = "scale(1.1)";
-              e.target.style.boxShadow = `
-                0 4px 12px rgba(255, 107, 107, 0.4),
-                0 2px 6px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4)
-              `;
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.opacity = "0.9";
-              e.target.style.transform = "scale(1)";
-              e.target.style.boxShadow = `
-                0 2px 8px rgba(255, 107, 107, 0.3),
-                0 1px 3px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3)
-              `;
-            }}
+            onMouseEnter={null}
+            onMouseLeave={null}
           >
             <span style={{
               color: "rgba(255, 255, 255, 0.9)",
